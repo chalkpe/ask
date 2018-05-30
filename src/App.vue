@@ -45,4 +45,12 @@ export default {
   main {
     flex: 1;
   }
+
+  footer {
+    color: #ccc;
+    font-size: 0.8em;
+
+    padding: 0.5em;
+    text-align: center;
+  }
 </style>

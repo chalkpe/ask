@@ -23,18 +23,19 @@ export default {
 
 <style>
   nav {
-    height: 3.5em;
-    box-shadow: 0 2px 8px #f0f1f2;
+    height: 3em;
     margin-bottom: 2em;
+    box-shadow: 0 2px 8px #f0f1f2;
   }
 
   nav li {
     color: #333;
     padding: 0 1em;
-    line-height: 3em;
     display: inline-block;
+
     cursor: pointer;
-    border-top: 0.2em solid white;
+    line-height: 2.8em;
+    border-top: 0.2em solid transparent;
   }
 
   nav li[active] {
