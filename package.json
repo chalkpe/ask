@@ -9,6 +9,9 @@
   "dependencies": {
     "babel-polyfill": "^6.26.0",
     "firebase": "^5.0.4",
+    "lato-webfont": "^2.15.1",
+    "node-sass": "^4.9.0",
+    "noto-sans-kr": "^0.1.1",
     "spectre.css": "^0.5.1",
     "vue": "^2.5.16",
     "vue-hot-reload-api": "^2.3.0"

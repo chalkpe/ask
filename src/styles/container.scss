@@ -1,9 +1,4 @@
-@import "spectre.css";
-
-html, body {
-  height: 100%;
-  margin: 0; padding: 0;
-}
+/*! source: https://github.com/jgthms/bulma */
 
 .container {
   margin: 0 auto;
@@ -12,21 +7,21 @@ html, body {
 
 @media screen and (min-width: 1088px) {
   .container {
-    max-width: 960px;
     width: 960px;
+    max-width: 960px;
   }
 }
 
 @media screen and (min-width: 1280px) {
   .container {
-    max-width: 1152px;
     width: 1152px;
+    max-width: 1152px;
   }
 }
 
 @media screen and (min-width: 1472px) {
   .container {
-    max-width: 1344px;
     width: 1344px;
+    max-width: 1344px;
   }
 }

@@ -16,6 +16,9 @@
 </template>
 
 <script>
+import 'lato-webfont'
+import 'noto-sans-kr'
+
 import Ask from './components/Ask.vue'
 import Answers from './components/Answers.vue'
 import Navigation from './components/Navigation.vue'
@@ -32,11 +35,23 @@ export default {
 }
 </script>
 
-<style>
+<style lang="scss">
+  @import './base.scss';
+
+  html, body {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+  }
+
+  textarea {
+    resize: none;
+  }
+
   #app {
     display: flex;
     flex-direction: column;
-    background-color: #fff;
+    background-color: $light-color;
 
     height: 100%;
     font-size: 18px;
@@ -47,7 +62,7 @@ export default {
   }
 
   footer {
-    color: #ccc;
+    color: $gray-color;
     font-size: 0.8em;
 
     padding: 0.5em;
