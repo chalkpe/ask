@@ -52,9 +52,7 @@ export default {
     display: flex;
     flex-direction: column;
     background-color: $light-color;
-
     height: 100%;
-    font-size: 18px;
   }
 
   main {
