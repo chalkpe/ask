@@ -1,15 +1,8 @@
 <template>
   <div id="app">
     <navigation-tab />
-
-    <main class="container">
-      <question-form />
-      <answer-stream />
-    </main>
-
-    <footer>
-      Ask &copy; 2018 Chalk
-    </footer>
+    <main class="container"><router-view /></main>
+    <footer>Ask &copy; 2018 Chalk</footer>
   </div>
 </template>
 
@@ -17,20 +10,11 @@
 import 'lato-webfont'
 import 'noto-sans-kr'
 import 'spectre.css/dist/spectre-icons.css'
-
-import QuestionForm from './components/QuestionForm.vue'
-import AnswerStream from './components/AnswerStream.vue'
 import NavigationTab from './components/NavigationTab.vue'
 
 export default {
   name: 'App',
-  components: { QuestionForm, AnswerStream, NavigationTab },
-
-  data () {
-    return {
-      nav: 'ask'
-    }
-  }
+  components: { NavigationTab }
 }
 </script>
 

@@ -16,6 +16,7 @@
     "spectre.css": "^0.5.1",
     "vue": "^2.5.16",
     "vue-hot-reload-api": "^2.3.0",
+    "vue-router": "^3.0.1",
     "vuefire": "^1.4.5"
   },
   "devDependencies": {

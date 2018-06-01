@@ -1,20 +1,14 @@
 <template>
   <nav>
     <div class="container">
-      <li>Ask</li>
-      <li @click="openTwitter">Twitter</li>
+      <li><router-link to="/">Ask</router-link></li>
     </div>
   </nav>
 </template>
 
 <script>
 export default {
-  name: 'NavigationTab',
-  methods: {
-    openTwitter () {
-      window.open('https://twitter.com/amato17', '_blank')
-    }
-  }
+  name: 'NavigationTab'
 }
 </script>
 
