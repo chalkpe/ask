@@ -1,50 +1,38 @@
 <template>
-  <div class="answers columns">
+  <div class="answers">
     <div
       v-for="answer of answers"
       :key="answer['.key']"
-      class="column col-sm-12 col-lg-6">
+      class="answer card">
 
-      <div class="card">
-        <div class="card-header">
-          <div class="card-title">
-            {{ answer.question }}
-          </div>
-
-          <div class="card-subtitle text-gray">
-            {{ answer.askedAt | rd }}에 질문 &middot; {{ answer.repliedAt | rd }}에 답변
-          </div>
+      <div class="card-header">
+        <div class="card-title">
+          {{ answer.question }}
         </div>
 
-        <div class="card-body">
-          {{ answer.answer }}
+        <div class="card-subtitle text-gray">
+          <rel-date :epoch="answer.repliedAt" /> &middot;
+          <rel-date :epoch="answer.askedAt" :diff="answer.repliedAt" /> 동안 기다린 질문
         </div>
       </div>
 
+      <div class="card-body">
+        {{ answer.answer }}
+      </div>
     </div>
   </div>
 </template>
 
 <script>
-import firebase from 'firebase'
-import moment from 'moment'
-import 'moment/locale/ko'
+import RelDate from './RelDate.vue'
 
+import firebase from 'firebase'
 const answersRef = firebase.database().ref('answers')
 
 export default {
   name: 'Answers',
-
-  firebase: {
-    answers: answersRef
-  },
-
-  filters: {
-    rd (epoch) {
-      moment.locale('ko')
-      return moment(epoch).fromNow()
-    }
-  }
+  components: { RelDate },
+  firebase: { answers: answersRef }
 }
 </script>
 
@@ -52,7 +40,7 @@ export default {
   @import '../base.scss';
 
   .answers {
-    .column {
+    .answer {
       margin-bottom: 0.75em;
     }
 

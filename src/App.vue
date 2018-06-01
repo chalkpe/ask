@@ -6,8 +6,8 @@
       @select="nav = $event"/>
 
     <main class="container">
-      <ask v-if="nav === 'ask'" />
-      <answers v-if="nav === 'answers'" />
+      <ask />
+      <answers />
     </main>
 
     <footer>
