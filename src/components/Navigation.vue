@@ -2,13 +2,10 @@
   <nav>
     <div class="container">
       <li
-        :active="nav === 'ask'"
-        @click="$emit('select', 'ask')">Ask</li>
-
-      <li
-        :active="nav === 'answers'"
-        @click="$emit('select', 'answers')">Answers</li>
-      </div>
+        v-for="item of list"
+        :active="nav === item"
+        @click="$emit('select', item)">{{ item }}</li>
+    </div>
   </nav>
 </template>
 
@@ -16,7 +13,8 @@
 export default {
   name: 'Navigation',
   props: {
-    nav: { type: String, required: true }
+    nav: { type: String, required: true },
+    list: { type: Array, required: true }
   }
 }
 </script>
@@ -30,13 +28,16 @@ export default {
     box-shadow: 0 2px 8px #f0f1f2;
 
     li {
-      color: $dark-color;
       padding: 0 1em;
       display: inline-block;
+      border-top: 0.25em solid transparent;
+
+      line-height: 3em;
+      color: $dark-color;
+      font-size: $font-size-lg;
+      text-transform: capitalize;
 
       cursor: pointer;
-      line-height: 2.8em;
-      border-top: 0.2em solid transparent;
     }
 
     li[active] {

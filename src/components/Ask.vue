@@ -25,9 +25,6 @@ export default {
   @import '../base.scss';
 
   .ask {
-    max-width: 40em;
-    margin: 0 auto;
-
     .bottom-bar {
       margin-top: 0.4em;
       display: flex;

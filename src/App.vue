@@ -2,6 +2,7 @@
   <div id="app">
     <navigation
       :nav="nav"
+      :list="['ask', 'answers']"
       @select="nav = $event"/>
 
     <main class="container">
