@@ -1,8 +1,7 @@
 <template>
   <span
     :data-tooltip="full"
-    :style="{fontWeight: 'bold'}"
-    class="tooltip">{{ rel }}</span>
+    class="rel-date tooltip">{{ rel }}</span>
 </template>
 
 <script>
@@ -30,3 +29,9 @@ export default {
   }
 }
 </script>
+
+<style lang="scss">
+  .rel-date {
+    font-weight: bold;
+  }
+</style>
