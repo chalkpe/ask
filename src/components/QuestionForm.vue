@@ -3,18 +3,18 @@
     <textarea
       v-model="question"
       :class="{ 'is-error': invalid }"
-      rows="3"
       class="form-input question"
+      rows="3"
       placeholder="초크에게 질문을 남기세요!" />
 
     <span class="bottom-bar">
-      <span class="counter">
-        {{ question.length }} / {{ maxLength }}
-      </span>
+      <span
+        :class="{ invalid }"
+        class="counter">{{ question.length }} / {{ maxLength }}</span>
 
       <button
-        :class="{ 'btn-error': invalid }"
         :disabled="invalid"
+        :class="{ 'btn-error': invalid }"
         class="btn btn-primary submit"
         @click="submitQuestion">질문하기</button>
     </span>
@@ -23,7 +23,7 @@
 
 <script>
 export default {
-  name: 'Ask',
+  name: 'QuestionForm',
   data: () => ({ question: '', maxLength: 120 }),
 
   computed: {
@@ -44,7 +44,7 @@ export default {
   @import '../base.scss';
 
   .ask {
-    margin-bottom: 2.5em;
+    margin: 2em 0;
 
     .bottom-bar {
       margin-top: 0.5em;
@@ -58,6 +58,10 @@ export default {
       color: $gray-color;
       font-size: $font-size-sm;
       margin-right: 1em;
+    }
+
+    .counter.invalid {
+      font-weight: bolder;
     }
   }
 </style>

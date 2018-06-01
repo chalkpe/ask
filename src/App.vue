@@ -1,13 +1,10 @@
 <template>
   <div id="app">
-    <navigation
-      :nav="nav"
-      :list="['ask', 'answers']"
-      @select="nav = $event"/>
+    <navigation-tab />
 
     <main class="container">
-      <ask />
-      <answers />
+      <question-form />
+      <answer-stream />
     </main>
 
     <footer>
@@ -19,14 +16,15 @@
 <script>
 import 'lato-webfont'
 import 'noto-sans-kr'
+import 'spectre.css/dist/spectre-icons.css'
 
-import Ask from './components/Ask.vue'
-import Answers from './components/Answers.vue'
-import Navigation from './components/Navigation.vue'
+import QuestionForm from './components/QuestionForm.vue'
+import AnswerStream from './components/AnswerStream.vue'
+import NavigationTab from './components/NavigationTab.vue'
 
 export default {
   name: 'App',
-  components: { Ask, Answers, Navigation },
+  components: { QuestionForm, AnswerStream, NavigationTab },
 
   data () {
     return {
