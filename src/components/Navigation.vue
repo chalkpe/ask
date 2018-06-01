@@ -30,7 +30,7 @@ export default {
     li {
       padding: 0 1em;
       display: inline-block;
-      border-top: 0.25em solid transparent;
+      border-top: 0.2em solid transparent;
 
       line-height: 3em;
       color: $dark-color;

@@ -10,6 +10,7 @@
     "babel-polyfill": "^6.26.0",
     "firebase": "^5.0.4",
     "lato-webfont": "^2.15.1",
+    "moment": "^2.22.1",
     "node-sass": "^4.9.0",
     "noto-sans-kr": "^0.1.1",
     "spectre.css": "^0.5.1",
