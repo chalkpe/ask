@@ -22,6 +22,9 @@
 </template>
 
 <script>
+import firebase from 'firebase'
+const questionsRef = firebase.database().ref('questions')
+
 export default {
   name: 'QuestionForm',
   data: () => ({ question: '', maxLength: 120 }),
@@ -34,7 +37,15 @@ export default {
 
   methods: {
     submitQuestion () {
-      // TODO
+      if (!this.question.length) return
+
+      questionsRef.push({
+        askedAt: Date.now(),
+        question: this.question
+      })
+
+      this.question = ''
+      alert('질문을 보냈습니다!')
     }
   }
 }
