@@ -8,6 +8,7 @@
   "license": "MIT",
   "dependencies": {
     "babel-polyfill": "^6.26.0",
+    "dotenv": "^5.0.1",
     "firebase": "^5.0.4",
     "lato-webfont": "^2.15.1",
     "moment": "^2.22.1",

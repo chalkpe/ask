@@ -10,9 +10,8 @@
         class="btn btn-primary float-right"
         @click="exit">로그아웃</button>
     </h2>
-    Wow amazing admin page!
 
-    <!-- TODO: view questions, write answer, show to public -->
+    <question-stream />
   </div>
 
   <div
@@ -45,10 +44,17 @@
 
 <script>
 import firebase from 'firebase'
+import QuestionStream from '../components/QuestionStream.vue'
 
 export default {
   name: 'AdminView',
-  data: () => ({ user: null }),
+  components: { QuestionStream },
+
+  data: () => ({
+    email: '',
+    password: '',
+    user: null
+  }),
 
   created () {
     firebase.auth().onAuthStateChanged(user => (this.user = user))
