@@ -55,7 +55,7 @@ export default {
   @import '../base.scss';
 
   .ask {
-    margin: 2em 0;
+    margin-bottom: 2em;
 
     .bottom-bar {
       margin-top: 0.5em;

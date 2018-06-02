@@ -1,7 +1,13 @@
 <template>
   <nav>
     <div class="container">
-      <li><router-link to="/">Ask</router-link></li>
+      <router-link
+        tag="li"
+        to="/">Ask</router-link>
+
+      <router-link
+        tag="li"
+        to="/admin">Admin</router-link>
     </div>
   </nav>
 </template>
@@ -17,6 +23,7 @@ export default {
 
   nav {
     height: 2.75em;
+    margin-bottom: 2em;
     box-shadow: 0 0.1em 0.4em #f0f1f2;
 
     li {
@@ -32,7 +39,7 @@ export default {
       display: inline-block;
     }
 
-    li:first-of-type {
+    li.router-link-exact-active {
       color: $primary-color;
       border-top-color: $primary-color;
     }

@@ -1,12 +1,78 @@
 <template>
-  <div class="admin">
+  <div
+    v-if="user"
+    class="admin">
+
+    <h2>
+      UID: {{ user.uid }}
+
+      <button
+        class="btn btn-primary float-right"
+        @click="exit">로그아웃</button>
+    </h2>
     Wow amazing admin page!
+
     <!-- TODO: view questions, write answer, show to public -->
+  </div>
+
+  <div
+    v-else
+    class="auth">
+
+    <p>어서 돌아가세요!<br>여러분들은 이 페이지에 올 이유가 없어요!</p>
+
+    <div class="form-group">
+      <input
+        v-model="email"
+        type="email"
+        class="form-input"
+        placeholder="Email">
+    </div>
+
+    <div class="form-group">
+      <input
+        v-model="password"
+        type="password"
+        class="form-input"
+        placeholder="Password">
+    </div>
+
+    <button
+      class="btn btn-primary btn-block"
+      @click="auth">어드민 로그인</button>
   </div>
 </template>
 
 <script>
+import firebase from 'firebase'
+
 export default {
-  name: 'AdminView'
+  name: 'AdminView',
+  data: () => ({ user: null }),
+
+  created () {
+    firebase.auth().onAuthStateChanged(user => (this.user = user))
+  },
+
+  methods: {
+    exit () {
+      firebase.auth().signOut()
+    },
+
+    auth () {
+      if (!this.email) return
+      if (!this.password) return
+
+      firebase.auth()
+        .signInWithEmailAndPassword(this.email, this.password)
+        .catch(err => alert(`error ${err.code} => ${err.message}`))
+    }
+  }
 }
 </script>
+
+<style lang="scss">
+  .auth {
+    max-width: 20em;
+  }
+</style>
