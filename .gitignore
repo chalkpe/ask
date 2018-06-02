@@ -1,5 +1,6 @@
 dist
 .cache
+config.js
 
 # Logs
 logs
