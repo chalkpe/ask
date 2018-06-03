@@ -36,9 +36,11 @@
     "vue-template-compiler": "^2.5.16"
   },
   "scripts": {
+    "clean": "rm -rf .cache dist",
     "start": "parcel index.html",
     "build": "parcel build index.html --no-minify",
     "lint": "eslint src --ext .js,.vue",
+    "login": "firebase login",
     "deploy": "firebase deploy"
   }
 }
