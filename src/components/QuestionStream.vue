@@ -27,7 +27,7 @@
       class="empty">
       <div class="empty-icon"><i class="icon icon-mail" /></div>
       <p class="empty-title h5">받은 질문이 없습니다</p>
-      <p class="empty-subtitle">흑흑... 다들 너무해... 아무도 관심 없어 이거</p>
+      <p class="empty-subtitle">흑흑... 다들 너무해... 아무도 관심 없어...</p>
       <div class="empty-action">
         <button
           class="btn btn-primary"

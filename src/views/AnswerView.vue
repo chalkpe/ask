@@ -1,28 +1,43 @@
 <template>
-  <div
-    v-if="answer"
-    class="single-answer card">
+  <div class="single-answer">
+    <div
+      v-if="answer"
+      class="card">
+      <div class="card-header">
+        <div class="card-title h4">{{ answer.question }}</div>
 
-    <div class="card-header">
-      <div class="card-title h4">{{ answer.question }}</div>
-
-      <div class="card-subtitle text-gray">
-        <rel-date :epoch="answer.repliedAt" /> &middot;
-        <rel-date
-          :epoch="answer.askedAt"
-          :diff="answer.repliedAt" /> 동안 기다린 질문
+        <div class="card-subtitle text-gray">
+          <rel-date :epoch="answer.repliedAt" /> &middot;
+          <rel-date
+            :epoch="answer.askedAt"
+            :diff="answer.repliedAt" /> 동안 기다린 질문
+        </div>
       </div>
+
+      <div class="card-body">{{ answer.answer }}</div>
     </div>
 
-    <div class="card-body">{{ answer.answer }}</div>
+    <div class="text-right bottom-bar">
+      <button
+        class="btn mr-1"
+        @click="$router.replace('/')">돌아가기</button>
+
+      <button
+        class="btn btn-primary"
+        @click="share">공유하기</button>
+    </div>
   </div>
 </template>
 
 <script>
+import firebase from '../firebase'
 import RelDate from '../components/RelDate.vue'
 
-import firebase from '../firebase'
+const tweet = 'https://twitter.com/intent/tweet'
 const answers = firebase.firestore().collection('answers')
+
+const ellipsis = (text, limit) =>
+  (text.length >= limit) ? (text.slice(0, limit - 1).trim() + '⋯') : text
 
 export default {
   name: 'AnswerView',
@@ -49,6 +64,16 @@ export default {
     update () {
       answers.doc(this.id).get()
         .then(snapshot => (this.answer = snapshot.data()))
+    },
+
+    share () {
+      const answer = ellipsis(this.answer.answer, 70)
+      const question = ellipsis(this.answer.question, 70)
+
+      const url = encodeURIComponent(window.location.href)
+      const text = encodeURIComponent(`${question} — ${answer}`)
+
+      window.open(`${tweet}?url=${url}&text=${text}`, '_blank')
     }
   }
 }
@@ -58,6 +83,8 @@ export default {
   @import '../base.scss';
 
   .single-answer {
-
+    .bottom-bar {
+      margin-top: 0.75em;
+    }
   }
 </style>
