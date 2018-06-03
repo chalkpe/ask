@@ -6,4 +6,6 @@ import firebase from 'firebase'
 import 'firebase/firestore'
 
 Vue.use(VueFirestore)
-export default firebase.initializeApp(config)
+firebase.initializeApp(config)
+
+export default firebase
