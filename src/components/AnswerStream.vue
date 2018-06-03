@@ -33,11 +33,14 @@
 <script>
 import RelDate from './RelDate.vue'
 import firebase from '../firebase'
+const db = firebase.firestore()
 
 export default {
   name: 'AnswerStream',
   components: { RelDate },
-  firestore: () => ({ answers: firebase.firestore().collection('answers') })
+  firestore: () => ({
+    answers: db.collection('answers').orderBy('repliedAt', 'desc')
+  })
 }
 </script>
 

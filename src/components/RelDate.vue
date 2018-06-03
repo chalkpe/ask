@@ -1,7 +1,7 @@
 <template>
   <span
     :data-tooltip="full"
-    class="rel-date tooltip">{{ rel }}</span>
+    class="rel-date tooltip tooltip-right">{{ rel }}</span>
 </template>
 
 <script>

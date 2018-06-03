@@ -3,15 +3,8 @@
     v-if="user"
     class="admin">
 
-    <h2>
-      UID: {{ user.uid }}
-
-      <button
-        class="btn btn-primary float-right"
-        @click="exit">로그아웃</button>
-    </h2>
-
-    <question-stream />
+    <question-stream @open="question = $event" />
+    <answer-form :question="question" @close="question = null" />
   </div>
 
   <div
@@ -44,16 +37,18 @@
 
 <script>
 import firebase from '../firebase'
+import AnswerForm from '../components/AnswerForm.vue'
 import QuestionStream from '../components/QuestionStream.vue'
 
 export default {
   name: 'AdminView',
-  components: { QuestionStream },
+  components: { AnswerForm, QuestionStream },
 
   data: () => ({
     email: '',
     password: '',
-    user: null
+    user: null,
+    question: null
   }),
 
   created () {
