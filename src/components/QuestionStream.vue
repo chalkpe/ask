@@ -16,9 +16,15 @@
       </div>
 
       <div class="tile-action">
-        <button
-          class="btn"
-          @click="$emit('open', question)">답변하기</button>
+        <div class="btn-group">
+          <button
+            class="btn btn"
+            @click="remove(question)">삭제하기</button>
+
+          <button
+            class="btn btn-primary"
+            @click="$emit('open', question)">답변하기</button>
+        </div>
       </div>
     </div>
 
@@ -48,7 +54,17 @@ export default {
   components: { RelDate },
   firestore: () => ({
     questions: db.collection('questions').orderBy('askedAt')
-  })
+  }),
+
+  methods: {
+    remove (question) {
+      if (!confirm(`정말로 "${question.question}" 질문을 삭제하시겠어요?`)) return
+
+      db.collection('questions').doc(question['.key'])
+        .delete()
+        .catch(err => console.error('err on delete', err))
+    }
+  }
 }
 </script>
 
