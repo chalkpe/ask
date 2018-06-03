@@ -37,7 +37,7 @@
   },
   "scripts": {
     "start": "parcel index.html",
-    "build": "parcel build index.html",
+    "build": "parcel build index.html --target browser --public-url ./",
     "lint": "eslint src --ext .js,.vue",
     "deploy": "firebase deploy"
   }

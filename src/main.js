@@ -1,4 +1,5 @@
 import 'babel-polyfill'
+import './firebase'
 
 import Vue from 'vue'
 import App from './App.vue'

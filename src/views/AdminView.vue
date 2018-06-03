@@ -4,7 +4,9 @@
     class="admin">
 
     <question-stream @open="question = $event" />
-    <answer-form :question="question" @close="question = null" />
+    <answer-form
+      :question="question"
+      @close="question = null" />
   </div>
 
   <div
