@@ -35,6 +35,7 @@ export default {
     display: flex;
     flex-direction: column;
     background-color: $light-color;
+    min-height: 100vh;
   }
 
   main {
