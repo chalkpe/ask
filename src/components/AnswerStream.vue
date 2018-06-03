@@ -6,7 +6,10 @@
       class="answer card">
 
       <div class="card-header">
-        <button class="btn btn-link float-right">
+        <button
+          class="btn btn-link float-right"
+          @click="$router.replace('/' + answer['.key'])">
+
           <i class="icon icon-share" />
         </button>
 
@@ -50,6 +53,10 @@ export default {
   .answers {
     .answer {
       margin-bottom: 0.75em;
+    }
+
+    .card-title {
+      font-size: $font-size * 1.2;
     }
 
     .card-subtitle {

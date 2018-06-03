@@ -27,7 +27,7 @@ const db = firebase.firestore()
 
 export default {
   name: 'QuestionForm',
-  data: () => ({ question: '', maxLength: 120 }),
+  data: () => ({ question: '', maxLength: 140 }),
 
   computed: {
     invalid () {
