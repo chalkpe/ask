@@ -1,5 +1,5 @@
 <template>
-  <nav>
+  <nav class="navigation-tab">
     <div class="container">
       <router-link
         tag="li"
@@ -21,8 +21,7 @@ export default {
 <style lang="scss">
   @import '../base.scss';
 
-  nav {
-    height: 2.75em;
+  .navigation-tab {
     margin-bottom: 2em;
     box-shadow: 0 0.1em 0.4em #f0f1f2;
 

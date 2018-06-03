@@ -35,7 +35,6 @@ export default {
     display: flex;
     flex-direction: column;
     background-color: $light-color;
-    height: 100%;
   }
 
   main {
