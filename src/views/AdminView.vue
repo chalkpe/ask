@@ -43,7 +43,7 @@
 </template>
 
 <script>
-import firebase from 'firebase'
+import firebase from '../firebase'
 import QuestionStream from '../components/QuestionStream.vue'
 
 export default {

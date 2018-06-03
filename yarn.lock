@@ -5212,6 +5212,10 @@ vue-eslint-parser@^2.0.3:
     esquery "^1.0.0"
     lodash "^4.17.4"
 
+vue-firestore@^0.2.9:
+  version "0.2.9"
+  resolved "https://registry.yarnpkg.com/vue-firestore/-/vue-firestore-0.2.9.tgz#cbb837a021b7d315e3be431d2887d19230b67084"
+
 vue-hot-reload-api@^2.3.0:
   version "2.3.0"
   resolved "https://registry.yarnpkg.com/vue-hot-reload-api/-/vue-hot-reload-api-2.3.0.tgz#97976142405d13d8efae154749e88c4e358cf926"
@@ -5234,10 +5238,6 @@ vue-template-es2015-compiler@^1.6.0:
 vue@^2.5.16:
   version "2.5.16"
   resolved "https://registry.yarnpkg.com/vue/-/vue-2.5.16.tgz#07edb75e8412aaeed871ebafa99f4672584a0085"
-
-vuefire@^1.4.5:
-  version "1.4.5"
-  resolved "https://registry.yarnpkg.com/vuefire/-/vuefire-1.4.5.tgz#2f31028b18f25e0f581bb68fb94b88302d62ebf8"
 
 websocket-driver@>=0.5.1:
   version "0.7.0"

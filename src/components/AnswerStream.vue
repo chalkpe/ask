@@ -15,8 +15,7 @@
         </div>
 
         <div class="card-subtitle text-gray">
-          <rel-date
-            :epoch="answer.repliedAt" /> &middot;
+          <rel-date :epoch="answer.repliedAt" /> &middot;
 
           <rel-date
             :epoch="answer.askedAt"
@@ -33,14 +32,12 @@
 
 <script>
 import RelDate from './RelDate.vue'
-
-import firebase from 'firebase'
-const answersRef = firebase.database().ref('answers')
+import firebase from '../firebase'
 
 export default {
   name: 'AnswerStream',
   components: { RelDate },
-  firebase: { answers: answersRef }
+  firestore: () => ({ answers: firebase.firestore().collection('answers') })
 }
 </script>
 

@@ -1,8 +1,9 @@
-import config from './config'
-
 import Vue from 'vue'
-import VueFire from 'vuefire'
-import firebase from 'firebase'
+import VueFirestore from 'vue-firestore'
 
-Vue.use(VueFire)
-firebase.initializeApp(config)
+import config from './config'
+import firebase from 'firebase'
+require('firebase/firestore')
+
+Vue.use(VueFirestore)
+export default firebase.initializeApp(config)

@@ -26,16 +26,12 @@
 
 <script>
 import RelDate from './RelDate.vue'
-
-import firebase from 'firebase'
-const questionsRef = firebase.database().ref('questions')
-
-console.log(questionsRef)
+import firebase from '../firebase'
 
 export default {
   name: 'QuestionStream',
   components: { RelDate },
-  firebase: { questions: questionsRef }
+  firestore: () => ({ questions: firebase.firestore().collection('questions') })
 }
 </script>
 

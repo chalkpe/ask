@@ -22,8 +22,8 @@
 </template>
 
 <script>
-import firebase from 'firebase'
-const questionsRef = firebase.database().ref('questions')
+import firebase from '../firebase'
+const db = firebase.firestore()
 
 export default {
   name: 'QuestionForm',
@@ -39,7 +39,7 @@ export default {
     submitQuestion () {
       if (!this.question.length) return
 
-      questionsRef.push({
+      db.collection('questions').add({
         askedAt: Date.now(),
         question: this.question
       })
