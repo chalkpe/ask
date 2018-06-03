@@ -10,11 +10,17 @@
 import 'lato-webfont'
 import 'noto-sans-kr'
 import 'spectre.css/dist/spectre-icons.css'
+
+import firebase from './firebase'
 import NavigationTab from './components/NavigationTab.vue'
 
 export default {
   name: 'App',
-  components: { NavigationTab }
+  components: { NavigationTab },
+  async created () {
+    const messaging = firebase.messaging()
+    await messaging.requestPermission()
+  }
 }
 </script>
 

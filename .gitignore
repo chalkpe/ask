@@ -1,4 +1,5 @@
-dist
+dist/*
+!dist/manifest.json
 .cache
 config.js
 
