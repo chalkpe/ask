@@ -1,18 +1,22 @@
 service cloud.firestore {
   match /databases/{database}/documents {
+    function isAdmin() {
+      return exists(/databases/$(database)/documents/admins/$(request.auth.uid));
+    }
+
     match /{document=**} {
       allow read, write: if false;
     }
 
     match /questions/{id} {
-    	allow create;
-      allow read: if request.auth.uid == '3j3ZyeaiDbUmmf1HdJOXnna9MVe2';
-      allow delete: if request.auth.uid == '3j3ZyeaiDbUmmf1HdJOXnna9MVe2';
+      allow create;
+      allow read: if isAdmin();
+      allow delete: if isAdmin();
     }
 
     match /answers/{id} {
-    	allow read;
-      allow write: if request.auth.uid == '3j3ZyeaiDbUmmf1HdJOXnna9MVe2';
+      allow read;
+      allow write: if isAdmin();
     }
   }
 }
