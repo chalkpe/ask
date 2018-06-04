@@ -30,7 +30,7 @@ export default {
       line-height: 2.75em;
       border-top: 0.25em solid transparent;
 
-      color: $dark-color;
+      color: $light-color;
       font-size: $font-size-lg;
       text-transform: capitalize;
 

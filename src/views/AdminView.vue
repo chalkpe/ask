@@ -72,7 +72,10 @@ export default {
 
     const messaging = firebase.messaging()
     messaging.usePublicVapidKey(vapidKey)
-    messaging.requestPermission().catch(err => console.error('no noti', err))
+    messaging.requestPermission().catch(err => {
+      alert('알림 설정에 실패했습니다...')
+      console.error('notification', err)
+    })
   },
 
   methods: {
