@@ -1,7 +1,9 @@
+.cache
+
 dist/*
 !dist/manifest.json
-.cache
-config.js
+!dist/firebase-messaging-sw.js
+
 
 # Logs
 logs

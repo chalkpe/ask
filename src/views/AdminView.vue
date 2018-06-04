@@ -38,9 +38,13 @@
 </template>
 
 <script>
+import { vapidKey } from '../config'
 import firebase from '../firebase'
 import AnswerForm from '../components/AnswerForm.vue'
 import QuestionStream from '../components/QuestionStream.vue'
+
+const db = firebase.firestore()
+const messaging = firebase.messaging()
 
 export default {
   name: 'AdminView',
@@ -53,8 +57,25 @@ export default {
     question: null
   }),
 
-  created () {
+  watch: {
+    async user () {
+      if (!this.user) return
+
+      const token = await messaging.getToken()
+      const doc = db.collection('admins').doc(this.user.uid)
+
+      const tokens = (await doc.get()).get('tokens')
+      if (!tokens.include(token)) tokens.push(token)
+
+      await doc.update({ tokens })
+    }
+  },
+
+  async created () {
     firebase.auth().onAuthStateChanged(user => (this.user = user))
+
+    messaging.usePublicVapidKey(vapidKey)
+    await messaging.requestPermission()
   },
 
   methods: {

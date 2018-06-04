@@ -8,6 +8,10 @@ service cloud.firestore {
       allow read, write: if false;
     }
 
+    match /admins/{admin} {
+      allow read, write: if isAdmin();
+    }
+
     match /questions/{id} {
       allow create;
       allow read: if isAdmin();
