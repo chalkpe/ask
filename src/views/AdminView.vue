@@ -43,9 +43,6 @@ import firebase from '../firebase'
 import AnswerForm from '../components/AnswerForm.vue'
 import QuestionStream from '../components/QuestionStream.vue'
 
-const db = firebase.firestore()
-const messaging = firebase.messaging()
-
 export default {
   name: 'AdminView',
   components: { AnswerForm, QuestionStream },
@@ -60,9 +57,8 @@ export default {
   watch: {
     async user () {
       if (!this.user) return
-
-      const token = await messaging.getToken()
-      const doc = db.collection('admins').doc(this.user.uid)
+      const token = await firebase.messaging().getToken()
+      const doc = firebase.firestore().collection('admins').doc(this.user.uid)
 
       const tokens = (await doc.get()).get('tokens')
       if (!tokens.includes(token)) tokens.push(token)
@@ -74,8 +70,9 @@ export default {
   async created () {
     firebase.auth().onAuthStateChanged(user => (this.user = user))
 
+    const messaging = firebase.messaging()
     messaging.usePublicVapidKey(vapidKey)
-    await messaging.requestPermission()
+    messaging.requestPermission().catch(err => console.error('no noti', err))
   },
 
   methods: {
