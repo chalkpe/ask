@@ -41,7 +41,8 @@ export default {
 
       db.collection('questions').add({
         askedAt: Date.now(),
-        question: this.question
+        question: this.question,
+        userAgent: navigator.userAgent
       })
 
       this.question = ''
