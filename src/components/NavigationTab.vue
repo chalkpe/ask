@@ -38,6 +38,10 @@ export default {
       display: inline-block;
     }
 
+    li.router-link-active {
+      color: $dark-color;
+    }
+
     li.router-link-exact-active {
       color: $primary-color;
       border-top-color: $primary-color;

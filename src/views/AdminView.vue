@@ -38,7 +38,6 @@
 </template>
 
 <script>
-import { vapidKey } from '../config'
 import firebase from '../firebase'
 import AnswerForm from '../components/AnswerForm.vue'
 import QuestionStream from '../components/QuestionStream.vue'
@@ -69,13 +68,7 @@ export default {
 
   async created () {
     firebase.auth().onAuthStateChanged(user => (this.user = user))
-
-    const messaging = firebase.messaging()
-    messaging.usePublicVapidKey(vapidKey)
-    messaging.requestPermission().catch(err => {
-      alert('알림 설정에 실패했습니다...')
-      console.error('notification', err)
-    })
+    firebase.messaging().requestPermission().catch(err => console.error('n', err))
   },
 
   methods: {
