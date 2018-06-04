@@ -4,6 +4,7 @@ import { config, vapidKey } from './config'
 
 import firebase from 'firebase/app'
 import 'firebase/auth'
+import 'firebase/messaging'
 import 'firebase/firestore'
 
 Vue.use(VueFirestore)
