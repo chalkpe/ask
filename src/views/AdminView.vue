@@ -55,20 +55,31 @@ export default {
 
   watch: {
     async user () {
-      if (!this.user) return
-      const token = await firebase.messaging().getToken()
-      const doc = firebase.firestore().collection('admins').doc(this.user.uid)
+      const { user } = this
+      if (!user || !user.uid) return
 
-      const tokens = (await doc.get()).get('tokens')
-      if (!tokens.includes(token)) tokens.push(token)
+      try {
+        const token = await firebase.messaging().getToken()
+        const ref = firebase.firestore().collection('admins').doc(user.uid)
 
-      await doc.update({ tokens })
+        const tokens = (await ref.get()).get('tokens')
+        if (!tokens.includes(token)) {
+          await ref.update({ tokens: tokens.concat(token) })
+        }
+      } catch (err) {
+        console.error('cannot update FCM token', err)
+      }
     }
   },
 
   async created () {
     firebase.auth().onAuthStateChanged(user => (this.user = user))
-    firebase.messaging().requestPermission().catch(err => console.error('n', err))
+
+    try {
+      await firebase.messaging().requestPermission()
+    } catch (err) {
+      console.error('failed to request permission', err)
+    }
   },
 
   methods: {
