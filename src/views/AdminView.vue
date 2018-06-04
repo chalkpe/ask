@@ -65,7 +65,7 @@ export default {
       const doc = db.collection('admins').doc(this.user.uid)
 
       const tokens = (await doc.get()).get('tokens')
-      if (!tokens.include(token)) tokens.push(token)
+      if (!tokens.includes(token)) tokens.push(token)
 
       await doc.update({ tokens })
     }
