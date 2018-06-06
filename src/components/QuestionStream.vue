@@ -6,7 +6,9 @@
       class="question tile tile-centered">
 
       <div class="tile-content">
-        <p class="tile-title">
+        <p
+          :data-tooltip="question.userAgent"
+          class="tile-title tooltip">
           {{ question.question }}
         </p>
 
