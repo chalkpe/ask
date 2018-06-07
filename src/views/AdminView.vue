@@ -44,7 +44,6 @@ import QuestionStream from '../components/QuestionStream.vue'
 
 const auth = firebase.auth()
 const db = firebase.firestore()
-const messaging = firebase.messaging()
 
 export default {
   name: 'AdminView',
@@ -61,6 +60,8 @@ export default {
 
   async created () {
     auth.onAuthStateChanged(user => this.updateToken(this.user = user))
+
+    const messaging = firebase.messaging()
     messaging.requestPermission()
       .then(() => messaging.onTokenRefresh(() => this.updateToken()))
       .catch(err => console.error('failed to initialize messaging', err))
@@ -78,8 +79,8 @@ export default {
       if (!this.user) return
       const { uid, email } = this.user
 
-      this.token = await messaging.getToken()
-      if (!this.token) return console.error('oh nooo token is null')
+      this.token = await firebase.messaging().getToken()
+      if (!this.token) return console.error('noo token is null')
 
       const ref = db.collection('admins').doc(uid)
       const registrations = (await ref.get()).get('registrations') || []
