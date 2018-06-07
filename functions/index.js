@@ -5,7 +5,7 @@ admin.initializeApp()
 const t = () => admin
   .firestore()
   .collection('admins').get()
-  .then(({ docs }) => [].concat(...docs.map(d => d.get('tokens'))))
+  .then(({ docs }) => docs.map(d => d.get('registrations').map(r => r.token)))
 
 const p = (snap, ctx) => ({
   notification: {
@@ -15,8 +15,8 @@ const p = (snap, ctx) => ({
   }
 })
 
-const n = (tokens, payload) =>
-  admin.messaging().sendToDevice(tokens, payload)
+const n = (tokensList, payload) =>
+  admin.messaging().sendToDevice([].concat(...tokensList), payload)
 
 exports.notify = functions.firestore
   .document('questions/{id}')

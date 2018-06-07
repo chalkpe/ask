@@ -42,6 +42,10 @@ import firebase from '../firebase'
 import AnswerForm from '../components/AnswerForm.vue'
 import QuestionStream from '../components/QuestionStream.vue'
 
+const auth = firebase.auth()
+const db = firebase.firestore()
+const messaging = firebase.messaging()
+
 export default {
   name: 'AdminView',
   components: { AnswerForm, QuestionStream },
@@ -49,51 +53,47 @@ export default {
   data: () => ({
     email: '',
     password: '',
+    question: null,
+
     user: null,
-    question: null
+    token: null
   }),
 
-  watch: {
-    async user () {
-      const { user } = this
-      if (!user || !user.uid) return
-
-      try {
-        const token = await firebase.messaging().getToken()
-        const ref = firebase.firestore().collection('admins').doc(user.uid)
-
-        const tokens = (await ref.get()).get('tokens')
-        if (!tokens.includes(token)) {
-          await ref.update({ tokens: tokens.concat(token) })
-        }
-      } catch (err) {
-        console.error('cannot update FCM token', err)
-      }
-    }
-  },
-
   async created () {
-    firebase.auth().onAuthStateChanged(user => (this.user = user))
-
-    try {
-      await firebase.messaging().requestPermission()
-    } catch (err) {
-      console.error('failed to request permission', err)
-    }
+    auth.onAuthStateChanged(user => (this.user = user))
+    messaging.requestPermission()
+      .then(() => messaging.onTokenRefresh(() => this.updateToken()))
+      .catch(err => console.error('failed to request permission', err))
   },
 
   methods: {
-    exit () {
-      firebase.auth().signOut()
+    auth () {
+      if (!this.email || !this.password) return
+      return auth
+        .signInWithEmailAndPassword(this.email, this.password)
+        .catch(err => alert(`cannot sign in: ${err.code} => ${err.message}`))
     },
 
-    auth () {
-      if (!this.email) return
-      if (!this.password) return
+    async updateToken () {
+      if (!this.user) return
+      const { uid, email } = this.user
 
-      firebase.auth()
-        .signInWithEmailAndPassword(this.email, this.password)
-        .catch(err => alert(`error ${err.code} => ${err.message}`))
+      this.token = await messaging.getToken()
+      if (!this.token) return console.error('oh nooo token is null')
+
+      const ref = db.collection('admins').doc(uid)
+      const registrations = (await ref.get()).get('registrations')
+      if (registrations.find(({ token }) => token === this.token)) return
+
+      await ref.update({
+        email,
+        updatedAt: Date.now(),
+        registrations: registrations.concat({
+          token: this.token,
+          subscribedAt: Date.now(),
+          userAgent: navigator.userAgent
+        })
+      })
     }
   }
 }
