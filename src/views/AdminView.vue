@@ -62,6 +62,7 @@ export default {
   async created () {
     auth.onAuthStateChanged(user => (this.user = user))
     messaging.requestPermission()
+      .then(() => this.updateToken())
       .then(() => messaging.onTokenRefresh(() => this.updateToken()))
       .catch(err => console.error('failed to request permission', err))
   },
