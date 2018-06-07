@@ -2,7 +2,7 @@
   <div id="app">
     <navigation-tab />
     <main class="container"><router-view /></main>
-    <footer>Ask &copy; 2018 Chalk</footer>
+    <ask-footer />
   </div>
 </template>
 
@@ -10,11 +10,13 @@
 import 'lato-webfont'
 import 'noto-sans-kr'
 import 'spectre.css/dist/spectre-icons.css'
+
+import AskFooter from './components/AskFooter.vue'
 import NavigationTab from './components/NavigationTab.vue'
 
 export default {
   name: 'App',
-  components: { NavigationTab }
+  components: { AskFooter, NavigationTab }
 }
 </script>
 

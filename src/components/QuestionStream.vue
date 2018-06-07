@@ -24,7 +24,7 @@
 
           <button
             class="btn btn-primary"
-            @click="$emit('open', question)">답변하기</button>
+            @click="$router.push('/admin/' + question['.key'])">답변하기</button>
         </div>
       </div>
     </div>
@@ -38,7 +38,7 @@
       <div class="empty-action">
         <button
           class="btn btn-primary"
-          @click="$router.replace('/')">돌아가기</button>
+          @click="$router.back()">돌아가기</button>
       </div>
     </div>
   </div>

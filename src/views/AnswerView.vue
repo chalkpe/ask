@@ -1,8 +1,9 @@
 <template>
-  <div class="single-answer">
-    <div
-      v-if="answer"
-      class="card">
+  <section
+    v-if="answer"
+    class="single-answer">
+
+    <div class="card">
       <div class="card-header">
         <div class="card-title h4">{{ answer.question }}</div>
 
@@ -20,13 +21,17 @@
     <div class="text-right bottom-bar">
       <button
         class="btn mr-1"
-        @click="$router.replace('/')">돌아가기</button>
+        @click="$router.back()">돌아가기</button>
 
       <button
         class="btn btn-primary"
         @click="share">공유하기</button>
     </div>
-  </div>
+  </section>
+
+  <h2 v-else>
+    존재하지 않는 질문입니다. 주소를 제대로 입력했는지 확인해 보세요!
+  </h2>
 </template>
 
 <script>

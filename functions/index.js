@@ -9,9 +9,9 @@ const t = () => admin
 
 const p = (snap, ctx) => ({
   notification: {
-    title: 'Ask',
-    body: `새로운 질문: ${snap.data().question}`,
-    click_action: `https://ask.chalk.pe/#/${ctx.params.id}`
+    title: '새로운 질문이 있습니다!',
+    body: `${snap.data().question}`,
+    click_action: `https://ask.chalk.pe/#/admin/${ctx.params.id}`
   }
 })
 

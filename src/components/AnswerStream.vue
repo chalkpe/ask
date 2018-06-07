@@ -8,7 +8,7 @@
       <div class="card-header">
         <button
           class="btn btn-link float-right"
-          @click="$router.replace('/' + answer['.key'])">
+          @click="$router.push('/' + answer['.key'])">
 
           <i class="icon icon-share" />
         </button>

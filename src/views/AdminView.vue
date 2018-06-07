@@ -4,9 +4,7 @@
     class="admin">
 
     <question-stream @open="question = $event" />
-    <answer-form
-      :question="question"
-      @close="question = null" />
+    <router-view />
   </div>
 
   <div
@@ -39,7 +37,6 @@
 
 <script>
 import firebase from '../firebase'
-import AnswerForm from '../components/AnswerForm.vue'
 import QuestionStream from '../components/QuestionStream.vue'
 
 const auth = firebase.auth()
@@ -47,7 +44,7 @@ const db = firebase.firestore()
 
 export default {
   name: 'AdminView',
-  components: { AnswerForm, QuestionStream },
+  components: { QuestionStream },
 
   data: () => ({
     email: '',

@@ -37,19 +37,28 @@
 
 <script>
 import firebase from '../firebase'
+
 const db = firebase.firestore()
+const answers = db.collection('answers')
+const questions = db.collection('questions')
 
 export default {
   name: 'AnswerForm',
-  props: {
-    question: { type: Object, default: null }
-  },
 
-  data: () => ({ answer: '' }),
+  data: () => ({ question: null, answer: '' }),
+  computed: { id () { return this.$route.params.id } },
+
+  watch: { '$route' () { this.update() } },
+  created () { this.update() },
+
   methods: {
+    async update () {
+      this.question = (await questions.doc(this.id).get()).data()
+    },
+
     close () {
       this.answer = ''
-      this.$emit('close')
+      this.$router.back()
     },
 
     async uploadAnswer () {
@@ -57,8 +66,8 @@ export default {
       const answer = this.answer.trim()
       const { question, askedAt, '.key': key } = this.question
 
-      await db.collection('questions').doc(key).delete()
-      await db.collection('answers').add({ question, answer, askedAt, repliedAt })
+      await questions.doc(key).delete()
+      await answers.add({ question, answer, askedAt, repliedAt })
 
       this.close()
       alert('답변을 보냈습니다!')
