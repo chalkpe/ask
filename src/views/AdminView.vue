@@ -83,7 +83,7 @@ export default {
       if (!this.token) return console.error('oh nooo token is null')
 
       const ref = db.collection('admins').doc(uid)
-      const registrations = (await ref.get()).get('registrations')
+      const registrations = (await ref.get()).get('registrations') || []
       if (registrations.find(({ token }) => token === this.token)) return
 
       await ref.update({
