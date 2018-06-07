@@ -17,7 +17,8 @@
     "vue": "^2.5.16",
     "vue-firestore": "^0.2.9",
     "vue-hot-reload-api": "^2.3.0",
-    "vue-router": "^3.0.1"
+    "vue-router": "^3.0.1",
+    "whatwg-fetch": "^2.0.4"
   },
   "devDependencies": {
     "@vue/component-compiler-utils": "^1.3.1",
@@ -36,11 +37,11 @@
     "vue-template-compiler": "^2.5.16"
   },
   "scripts": {
-    "clean": "rm -rf .cache",
-    "start": "parcel index.html",
+    "clean": "rm -rf .cache dist && git checkout -- dist",
     "build": "parcel build index.html --no-minify",
+    "start": "parcel index.html --no-cache",
     "lint": "eslint src --ext .js,.vue",
-    "login": "firebase login",
+    "google-login": "firebase login",
     "deploy": "firebase deploy"
   }
 }

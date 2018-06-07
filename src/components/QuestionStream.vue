@@ -6,14 +6,13 @@
       class="question tile tile-centered">
 
       <div class="tile-content">
-        <p
-          :data-tooltip="question.userAgent"
-          class="tile-title tooltip">
+        <p class="tile-title">
           {{ question.question }}
         </p>
 
         <div class="tile-subtitle text-gray">
-          <rel-date :epoch="question.askedAt" />
+          <rel-date :epoch="question.askedAt" /> &middot;
+          <user-agent-string :uas="question.userAgent" />
         </div>
       </div>
 
@@ -47,13 +46,15 @@
 
 <script>
 import RelDate from './RelDate.vue'
+import UserAgentString from './UserAgentString.vue'
 import firebase from '../firebase'
 
 const db = firebase.firestore()
 
 export default {
   name: 'QuestionStream',
-  components: { RelDate },
+  components: { RelDate, UserAgentString },
+
   firestore: () => ({
     questions: db.collection('questions').orderBy('askedAt')
   }),
