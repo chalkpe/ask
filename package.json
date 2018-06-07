@@ -37,7 +37,7 @@
     "vue-template-compiler": "^2.5.16"
   },
   "scripts": {
-    "clean": "rm -rf .cache dist && git checkout -- dist",
+    "clean": "rm -rf dist && git checkout -- dist",
     "build": "parcel build index.html --no-cache --no-minify",
     "start": "parcel index.html --no-cache",
     "lint": "eslint src --ext .js,.vue",
