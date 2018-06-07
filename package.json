@@ -38,7 +38,7 @@
   },
   "scripts": {
     "clean": "rm -rf .cache dist && git checkout -- dist",
-    "build": "parcel build index.html --no-minify",
+    "build": "parcel build index.html --no-cache --no-minify",
     "start": "parcel index.html --no-cache",
     "lint": "eslint src --ext .js,.vue",
     "google-login": "firebase login",
