@@ -28,6 +28,7 @@
           @click="close">닫기</button>
 
         <button
+          :disabled="!answer || pending"
           class="btn btn-primary"
           @click="uploadAnswer">답변하기</button>
       </div>
@@ -45,7 +46,7 @@ const questions = db.collection('questions')
 export default {
   name: 'AnswerForm',
 
-  data: () => ({ question: null, answer: '' }),
+  data: () => ({ question: null, answer: '', pending: false }),
   computed: { id () { return this.$route.params.id } },
 
   watch: { '$route' () { this.update() } },
@@ -58,19 +59,22 @@ export default {
 
     close () {
       this.answer = ''
+      this.pending = false
       this.$router.back()
     },
 
     async uploadAnswer () {
+      this.pending = true
+
       const repliedAt = Date.now()
       const answer = this.answer.trim()
-      const { question, askedAt, '.key': key } = this.question
+      const { question, askedAt } = this.question
 
-      await questions.doc(key).delete()
+      await questions.doc(this.id).delete()
       await answers.add({ question, answer, askedAt, repliedAt })
 
       this.close()
-      alert('답변을 보냈습니다!')
+      setTimeout(() => alert('답변을 보냈습니다!'))
     }
   }
 }
