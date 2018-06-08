@@ -60,7 +60,7 @@ export default {
     close () {
       this.answer = ''
       this.pending = false
-      this.$router.back()
+      this.$router.push('/admin')
     },
 
     async uploadAnswer () {
