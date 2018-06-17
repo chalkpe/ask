@@ -21,7 +21,7 @@ export default {
 </script>
 
 <style lang="scss">
-  @import './base.scss';
+  @import 'base';
 
   html, body {
     margin: 0;

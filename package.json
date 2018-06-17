@@ -10,10 +10,10 @@
     "babel-polyfill": "^6.26.0",
     "firebase": "^5.0.4",
     "lato-webfont": "^2.15.1",
-    "moment": "^2.22.1",
+    "moment": "^2.22.2",
     "node-sass": "^4.9.0",
     "noto-sans-kr": "^0.1.1",
-    "spectre.css": "^0.5.1",
+    "spectre.css": "^0.5.2",
     "vue": "^2.5.16",
     "vue-firestore": "^0.2.9",
     "vue-hot-reload-api": "^2.3.0",
@@ -21,7 +21,7 @@
     "whatwg-fetch": "^2.0.4"
   },
   "devDependencies": {
-    "@vue/component-compiler-utils": "^1.3.1",
+    "@vue/component-compiler-utils": "^2.0.0",
     "babel-core": "^6.26.3",
     "babel-eslint": "^8.2.3",
     "babel-preset-env": "^1.7.0",
@@ -32,14 +32,14 @@
     "eslint-plugin-promise": "^3.8.0",
     "eslint-plugin-standard": "^3.1.0",
     "eslint-plugin-vue": "^4.5.0",
-    "firebase-tools": "^3.18.5",
-    "parcel-bundler": "^1.8.1",
+    "firebase-tools": "^3.18.6",
+    "parcel-bundler": "^1.9.1",
     "vue-template-compiler": "^2.5.16"
   },
   "scripts": {
-    "clean": "rm -rf dist && git checkout -- dist",
-    "build": "parcel build index.html --no-cache --no-minify",
-    "start": "parcel index.html --no-cache",
+    "clean": "rm -rf .cache dist && git checkout -- dist",
+    "build": "parcel build index.html",
+    "start": "parcel index.html",
     "lint": "eslint src --ext .js,.vue",
     "google-login": "firebase login",
     "deploy": "firebase deploy"

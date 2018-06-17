@@ -16,6 +16,3 @@ export default {
   computed: { pkg: () => pkg }
 }
 </script>
-
-<style lang="css">
-</style>
