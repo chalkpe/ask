@@ -13,7 +13,7 @@
         class="counter">{{ question.length }} / {{ maxLength }}</span>
 
       <button
-        :disabled="invalid"
+        :disabled="!question || invalid || pending"
         :class="{ 'btn-error': invalid }"
         class="btn btn-primary submit"
         @click="submitQuestion">질문하기</button>
@@ -27,7 +27,7 @@ const db = firebase.firestore()
 
 export default {
   name: 'QuestionForm',
-  data: () => ({ question: '', maxLength: 140 }),
+  data: () => ({ question: '', maxLength: 140, pending: false }),
 
   computed: {
     invalid () {
@@ -36,17 +36,19 @@ export default {
   },
 
   methods: {
-    submitQuestion () {
-      if (!this.question.length) return
+    async submitQuestion () {
+      if (this.pending) return
+      this.pending = true
 
-      db.collection('questions').add({
+      await db.collection('questions').add({
         askedAt: Date.now(),
         question: this.question,
         userAgent: navigator.userAgent
       })
 
       this.question = ''
-      alert('질문을 보냈습니다!')
+      this.pending = false
+      setTimeout(() => alert('질문을 보냈습니다!'))
     }
   }
 }
