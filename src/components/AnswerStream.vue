@@ -1,5 +1,9 @@
 <template>
   <div class="answers">
+    <answer-skeleton
+      v-if="!answers.length"
+      v-for="n of 10" />
+
     <div
       v-for="answer of answers"
       :key="answer['.key']"
@@ -34,15 +38,15 @@
 </template>
 
 <script>
-import RelDate from './RelDate.vue'
 import firebase from '../firebase'
-const db = firebase.firestore()
+import RelDate from './RelDate.vue'
+import AnswerSkeleton from './partial/AnswerSkeleton.vue'
 
 export default {
   name: 'AnswerStream',
-  components: { RelDate },
+  components: { RelDate, AnswerSkeleton },
   firestore: () => ({
-    answers: db.collection('answers').orderBy('repliedAt', 'desc')
+    answers: firebase.firestore().collection('answers').orderBy('repliedAt', 'desc')
   })
 }
 </script>
