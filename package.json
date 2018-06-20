@@ -33,12 +33,12 @@
     "eslint-plugin-standard": "^3.1.0",
     "eslint-plugin-vue": "^4.5.0",
     "firebase-tools": "^3.18.6",
-    "parcel-bundler": "^1.9.1",
+    "parcel-bundler": "^1.9.2",
     "vue-template-compiler": "^2.5.16"
   },
   "scripts": {
     "clean": "rm -rf .cache dist && git checkout -- dist",
-    "build": "parcel build index.html",
+    "build": "parcel build index.html --no-minify",
     "start": "parcel index.html",
     "lint": "eslint src --ext .js,.vue",
     "google-login": "firebase login",
