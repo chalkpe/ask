@@ -10,7 +10,7 @@
       </div>
     </div>
     <div class="card-body">
-      <random-span :a="40" :b="50" f="%" />
+      <random-span :a="40" :b="50" unit="%" />
     </div>
   </div>
 </template>
@@ -46,7 +46,8 @@ export default {
 
         margin-left: -20vw;
         animation: move-skeleton 1.5s infinite;
-        background-image: linear-gradient(90deg, transparent 0, rgba(lightgrey, 0.75) 50%, transparent 100%);
+        background-image: linear-gradient(90deg,
+          transparent 0, rgba(lightgrey, 0.75) 50%, transparent 100%);
       }
     }
 

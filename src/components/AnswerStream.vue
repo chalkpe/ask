@@ -2,7 +2,7 @@
   <div class="answers">
     <answer-skeleton
       v-if="!answers.length"
-      v-for="n of 10" />
+      v-for="n of 16" />
 
     <div
       v-for="answer of answers"

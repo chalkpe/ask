@@ -1,11 +1,10 @@
 <template lang="html">
-  <span :style="{ width: (a + Math.random() * b) + f }" />
+  <span :style="{ width: (a + Math.random() * b) + unit }" />
 </template>
 
 <script>
 export default {
   name: 'RandomSpan',
-
   props: {
     a: {
       type: Number,
@@ -17,13 +16,10 @@ export default {
       default: 0
     },
 
-    f: {
+    unit: {
       type: String,
       default: 'em'
     }
   }
 }
 </script>
-
-<style lang="css">
-</style>
