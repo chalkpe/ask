@@ -2,21 +2,28 @@
   <div class="answer skeleton card">
     <div class="card-header">
       <div class="card-title">
-        <random-span :a="5" :b="8" />
+        <random-span
+          :a="5"
+          :b="8" />
       </div>
 
       <div class="card-subtitle">
-        <random-span :a="11" :b="4" />
+        <random-span
+          :a="11"
+          :b="4" />
       </div>
     </div>
     <div class="card-body">
-      <random-span :a="40" :b="50" unit="%" />
+      <random-span
+        :a="40"
+        :b="50"
+        unit="%" />
     </div>
   </div>
 </template>
 
 <script>
-import RandomSpan from './RandomSpan.vue'
+import RandomSpan from './partial/RandomSpan.vue'
 export default {
   name: 'AnswerSkeleton',
   components: { RandomSpan }
@@ -28,7 +35,7 @@ export default {
     to { margin-left: 80vw; }
   }
 
-  .answer.skeleton {
+  .answer.skeleton.card {
     span {
       height: 1em;
       margin-bottom: 0.1em;
@@ -36,19 +43,19 @@ export default {
 
       overflow: hidden;
       display: inline-block;
+    }
 
-      &::after {
-        content: "";
-        display: block;
+    span::after {
+      content: "";
+      display: block;
 
-        width: 100px;
-        height: 100%;
+      width: 100px;
+      height: 100%;
 
-        margin-left: -20vw;
-        animation: move-skeleton 1.5s infinite;
-        background-image: linear-gradient(90deg,
-          transparent 0, rgba(lightgrey, 0.75) 50%, transparent 100%);
-      }
+      margin-left: -20vw;
+      animation: move-skeleton 1.5s infinite;
+      background-image: linear-gradient(90deg,
+        transparent 0, rgba(lightgrey, 0.75) 50%, transparent 100%);
     }
 
     .card-subtitle span {

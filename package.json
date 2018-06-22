@@ -18,6 +18,7 @@
     "vue-firestore": "^0.2.9",
     "vue-hot-reload-api": "^2.3.0",
     "vue-router": "^3.0.1",
+    "vuex": "^3.0.1",
     "whatwg-fetch": "^2.0.4"
   },
   "devDependencies": {
@@ -43,5 +44,8 @@
     "lint": "eslint src --ext .js,.vue",
     "google-login": "firebase login",
     "deploy": "firebase deploy"
+  },
+  "alias": {
+    "fb": "./src/firebase.js"
   }
 }

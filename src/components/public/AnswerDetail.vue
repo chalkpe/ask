@@ -35,8 +35,8 @@
 </template>
 
 <script>
-import firebase from '../firebase'
-import RelDate from '../components/RelDate.vue'
+import firebase from 'fb'
+import RelDate from '../partial/RelDate.vue'
 
 const tweet = 'https://twitter.com/intent/tweet'
 const answers = firebase.firestore().collection('answers')
@@ -45,7 +45,7 @@ const ellipsis = (text, limit) =>
   (text.length >= limit) ? (text.slice(0, limit - 1).trim() + '⋯') : text
 
 export default {
-  name: 'AnswerView',
+  name: 'AnswerDetail',
   components: { RelDate },
 
   data: () => ({ answer: null }),
@@ -85,7 +85,7 @@ export default {
 </script>
 
 <style lang="scss">
-  @import '../base.scss';
+  @import '../../base.scss';
 
   .single-answer {
     .bottom-bar {

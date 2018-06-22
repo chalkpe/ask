@@ -22,7 +22,7 @@
 </template>
 
 <script>
-import firebase from '../firebase'
+import firebase from 'fb'
 const db = firebase.firestore()
 
 export default {
@@ -55,7 +55,7 @@ export default {
 </script>
 
 <style lang="scss">
-  @import '../base.scss';
+  @import '../../base.scss';
 
   .ask {
     margin-bottom: 2em;

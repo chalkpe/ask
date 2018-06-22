@@ -45,10 +45,10 @@
 </template>
 
 <script>
-import RelDate from './RelDate.vue'
-import UserAgentString from './UserAgentString.vue'
-import firebase from '../firebase'
+import RelDate from '../partial/RelDate.vue'
+import UserAgentString from '../partial/UserAgentString.vue'
 
+import firebase from 'fb'
 const db = firebase.firestore()
 
 export default {
@@ -72,7 +72,7 @@ export default {
 </script>
 
 <style lang="scss">
-  @import '../base.scss';
+  @import '../../base.scss';
 
   .questions {
     .question {

@@ -4,8 +4,8 @@
     {{ pkg.license }} License &middot;
     <a
       :href="pkg.repository"
-      target="_blank"
-      class="text-gray c-hand">View on GitHub</a>
+      class="text-gray c-hand"
+      target="_blank">View on GitHub</a>
   </footer>
 </template>
 
