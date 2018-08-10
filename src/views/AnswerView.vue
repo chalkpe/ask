@@ -29,9 +29,10 @@
     </div>
   </section>
 
-  <h2 v-else>
-    존재하지 않는 질문입니다. 주소를 제대로 입력했는지 확인해 보세요!
-  </h2>
+  <h2 v-else>{{ isLoading
+    ? '질문을 불러오는 중입니다...'
+    : '존재하지 않는 질문입니다. 주소를 제대로 입력했는지 확인해 보세요!'
+  }}</h2>
 </template>
 
 <script>
@@ -48,7 +49,7 @@ export default {
   name: 'AnswerView',
   components: { RelDate },
 
-  data: () => ({ answer: null }),
+  data: () => ({ answer: null, isLoading: true }),
   computed: {
     id () {
       return this.$route.params.id
@@ -66,9 +67,12 @@ export default {
   },
 
   methods: {
-    update () {
-      answers.doc(this.id).get()
-        .then(snapshot => (this.answer = snapshot.data()))
+    async update () {
+      this.isLoading = true
+      const snapshot = await answers.doc(this.id).get()
+
+      this.isLoading = false
+      this.answer = snapshot.data()
     },
 
     share () {
