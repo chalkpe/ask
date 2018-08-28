@@ -9,12 +9,12 @@ import QuestionDetail from './components/admin/QuestionDetail.vue'
 
 Vue.use(VueRouter)
 
-const a = { path: ':id', component: AnswerDetail }
 const q = { path: ':id', component: QuestionDetail }
 
 const routes = [
   { path: '/admin', component: AdminView, children: [q] },
-  { path: '/', component: PublicView, children: [a] },
+  { path: '/:id', component: AnswerDetail },
+  { path: '/', component: PublicView },
   { path: '*', redirect: '/' }
 ]
 

@@ -1,5 +1,6 @@
 import 'babel-polyfill'
 import 'whatwg-fetch'
+import './firebase'
 
 import Vue from 'vue'
 import App from './App.vue'

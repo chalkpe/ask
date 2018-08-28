@@ -1,6 +1,5 @@
 <template>
   <div class="main">
-    <router-view />
     <question-form />
     <answer-stream />
   </div>
