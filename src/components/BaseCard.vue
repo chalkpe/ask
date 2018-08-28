@@ -1,0 +1,119 @@
+<template lang="html">
+  <article 
+    v-if="!card"
+    class="skeleton card">
+    
+    <div class="card-header">
+      <div class="card-title">
+        <random-span :a="5" :b="8" />
+      </div>
+
+      <div class="card-subtitle">
+        <random-span :a="11" :b="4" />
+      </div>
+    </div>
+
+    <div class="card-body">
+      <random-span :a="40" :b="50" unit="%" />
+    </div>
+  </article>
+
+  <article
+    v-else
+    class="card">
+
+    <div class="card-header">
+      <span class="float-right">
+        <slot name="options" />
+      </span>
+      
+      <div class="card-title">
+        {{ card.question }}
+      </div>
+
+      <div class="card-subtitle text-gray">
+        <rel-date :epoch="card.repliedAt || card.askedAt" />
+        <rel-date
+          v-if="card.repliedAt"
+          :epoch="card.askedAt"
+          :diff="card.repliedAt" /> 동안 기다린 질문
+      </div>
+    </div>
+
+    <div v-if="card.answer" class="card-body">
+      {{ card.answer }}
+    </div>
+  </article>
+</template>
+
+<script>
+import RelDate from './partial/RelDate.vue'
+import RandomSpan from './partial/RandomSpan.vue'
+
+export default {
+  components: { RelDate, RandomSpan },
+
+  props: {
+    card: {
+      type: Object,
+      default: null
+    }
+  }
+}
+</script>
+
+<style lang="scss">
+  @import '../base.scss';
+
+  .card {
+    margin-bottom: 0.75em;
+
+    .card-title {
+      font-size: $font-size * 1.2;
+    }
+
+    .card-subtitle {
+      font-size: $font-size-sm;
+
+      span + span::before {
+        content: " · ";
+      }
+    }
+
+    .card-body {
+      font-size: $font-size;
+    }
+  }
+
+  @keyframes move-skeleton {
+    to { margin-left: 80vw; }
+  }
+
+  .card.skeleton {
+    span {
+      height: 1em;
+      margin-bottom: 0.1em;
+      background-color: #eee;
+
+      overflow: hidden;
+      display: inline-block;
+    }
+
+    span::after {
+      content: "";
+      display: block;
+
+      width: 100px;
+      height: 100%;
+
+      margin-left: -20vw;
+      animation: move-skeleton 1.5s infinite;
+      background-image: linear-gradient(90deg,
+        transparent 0, rgba(lightgrey, 0.75) 50%, transparent 100%);
+    }
+
+    .card-subtitle span {
+      background-color: #f5f5f5;
+    }
+  }
+</style>

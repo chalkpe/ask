@@ -1,27 +1,31 @@
 <template>
-  <div class="answers">
-    <template v-if="!answers.length">
-      <answer-skeleton
-        v-for="n of 16"
-        :key="n" />
-    </template>
+  <section class="answers">
+    <base-card
+      v-if="!answers.length"
+      v-for="n of 16" :key="n" />
 
-    <answer-card
+    <base-card
       v-for="answer of answers"
-      :button="true"
-      :answer="answer"
-      :key="answer['.key']" />
-  </div>
+      :card="answer" :key="answer['.key']">
+
+      <button
+        slot="options"
+        class="btn btn-link"
+        @click="$router.push('/' + answer['.key'])">
+
+        <i class="icon icon-share" />
+      </button>
+    </base-card>
+  </section>
 </template>
 
 <script>
 import firebase from 'fb'
-import AnswerCard from '../AnswerCard.vue'
-import AnswerSkeleton from '../AnswerSkeleton.vue'
+import BaseCard from '../BaseCard.vue'
 
 export default {
   name: 'AnswerStream',
-  components: { AnswerCard, AnswerSkeleton },
+  components: { BaseCard },
   firestore: () => ({
     answers: firebase.firestore().collection('answers').orderBy('repliedAt', 'desc')
   })
