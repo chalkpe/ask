@@ -18,6 +18,7 @@
     "vue-firestore": "^0.2.9",
     "vue-hot-reload-api": "^2.3.0",
     "vue-router": "^3.0.1",
+    "vuex": "^3.0.1",
     "whatwg-fetch": "^2.0.4"
   },
   "devDependencies": {
@@ -34,14 +35,18 @@
     "eslint-plugin-vue": "^4.5.0",
     "firebase-tools": "^3.18.6",
     "parcel-bundler": "^1.9.2",
+    "rimraf": "^2.6.2",
     "vue-template-compiler": "^2.5.16"
   },
   "scripts": {
-    "clean": "rm -rf .cache dist && git checkout -- dist",
-    "build": "parcel build index.html --no-minify",
+    "clean": "rimraf .cache dist && git checkout -- dist",
+    "build": "parcel build index.html --no-minify --public-url .",
     "start": "parcel index.html",
     "lint": "eslint src --ext .js,.vue",
-    "google-login": "firebase login",
+    "glogin": "firebase login",
     "deploy": "firebase deploy"
+  },
+  "alias": {
+    "fb": "./src/firebase.js"
   }
 }

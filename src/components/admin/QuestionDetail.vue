@@ -37,14 +37,13 @@
 </template>
 
 <script>
-import firebase from '../firebase'
-
+import firebase from 'fb'
 const db = firebase.firestore()
 const answers = db.collection('answers')
 const questions = db.collection('questions')
 
 export default {
-  name: 'AnswerForm',
+  name: 'QuestionDetail',
 
   data: () => ({ question: null, answer: '', pending: false }),
   computed: { id () { return this.$route.params.id } },
@@ -79,6 +78,3 @@ export default {
   }
 }
 </script>
-
-<style lang="css">
-</style>
