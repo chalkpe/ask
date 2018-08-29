@@ -1,37 +1,17 @@
 <template>
   <div class="questions">
-    <div
-      v-for="question of questions"
-      :key="question['.key']"
-      class="question tile tile-centered">
-
-      <div class="tile-content">
-        <p class="tile-title">
-          {{ question.question }}
-        </p>
-
-        <div class="tile-subtitle text-gray">
-          <rel-date :epoch="question.askedAt" /> &middot;
-          <user-agent-string :uas="question.userAgent" />
-        </div>
-      </div>
-
-      <div class="tile-action">
-        <div class="btn-group">
-          <button
-            class="btn btn"
-            @click="remove(question)">삭제하기</button>
-
-          <button
-            class="btn btn-primary"
-            @click="$router.push('/admin/' + question['.key'])">답변하기</button>
-        </div>
-      </div>
-    </div>
-
-    <div
+    <question-tile
       v-if="!questions.length"
-      class="empty">
+      v-for="n of 16" :key="n" />
+
+    <question-tile
+      v-for="question of questions"
+      :question="question" :key="question['.key']" />
+
+    <div
+      v-if="!isLoading && !questions.length"
+      class="questions empty">
+
       <div class="empty-icon"><i class="icon icon-mail" /></div>
       <p class="empty-title h5">받은 질문이 없습니다</p>
       <p class="empty-subtitle">흑흑... 다들 너무해... 아무도 관심 없어...</p>
@@ -45,19 +25,23 @@
 </template>
 
 <script>
-import RelDate from '../partial/RelDate.vue'
-import UserAgentString from '../partial/UserAgentString.vue'
+import QuestionTile from './QuestionTile.vue'
 
 import firebase from 'fb'
 const db = firebase.firestore()
 
 export default {
   name: 'QuestionStream',
-  components: { RelDate, UserAgentString },
+  components: { QuestionTile },
+  data: () => ({ isLoading: true }),
 
   firestore: () => ({
     questions: db.collection('questions').orderBy('askedAt')
   }),
+
+  watch: {
+    questions () { this.isLoading = false }
+  },
 
   methods: {
     remove (question) {
@@ -71,7 +55,7 @@ export default {
 }
 </script>
 
-<style lang="scss">
+<style lang="scss" scoped>
   @import '../../base.scss';
 
   .questions {

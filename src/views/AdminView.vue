@@ -1,5 +1,5 @@
 <template>
-  <div v-if="true">
+  <div v-if="user">
     <question-stream />
     <router-view />
   </div>
@@ -7,11 +7,14 @@
 </template>
 
 <script>
+import { mapState } from 'vuex'
+
 import AuthForm from '../components/admin/AuthForm.vue'
 import QuestionStream from '../components/admin/QuestionStream.vue'
 
 export default {
   name: 'AdminView',
-  components: { AuthForm, QuestionStream }
+  components: { AuthForm, QuestionStream },
+  computed: mapState(['user'])
 }
 </script>

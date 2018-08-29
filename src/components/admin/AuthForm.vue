@@ -19,45 +19,26 @@
     </div>
 
     <button
+      :disabled="!email || !password"
       class="btn btn-primary btn-block"
       @click="auth">어드민 로그인</button>
   </div>
 </template>
 
 <script>
-import { mapState } from 'vuex'
-
-import firebase from 'fb'
-const auth = firebase.auth()
-const db = firebase.firestore()
-
 export default {
-  data: () => ({
-    email: '',
-    password: '',
-    token: null
-  }),
-  computed: mapState(['user']),
-
-  async created () {
-    const messaging = firebase.messaging()
-    messaging.requestPermission()
-      .then(() => messaging.onTokenRefresh(() => this.updateToken()))
-      .catch(err => console.error('failed to initialize messaging', err))
-  },
-
+  data: () => ({ email: '', password: '' }),
   methods: {
     auth () {
-      if (!this.email || !this.password) return
-      return auth
-        .signInWithEmailAndPassword(this.email, this.password)
+      this.$store
+        .dispatch('signIn', { email: this.email, password: this.password })
         .catch(err => alert(`cannot sign in: ${err.code} => ${err.message}`))
     }
   }
 }
 </script>
 
-<style lang="scss">
+<style lang="scss" scoped>
   .auth {
     max-width: 20em;
   }

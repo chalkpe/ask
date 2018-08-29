@@ -23,3 +23,31 @@ export default {
   }
 }
 </script>
+
+<style lang="scss" scoped>
+  @keyframes move-skeleton {
+    to { margin-left: 80vw; }
+  }
+
+  span {
+    height: 1em;
+    margin-bottom: 0.1em;
+    background-color: #eee;
+
+    overflow: hidden;
+    display: inline-block;
+  }
+
+  span::after {
+    content: "";
+    display: block;
+
+    width: 100px;
+    height: 100%;
+
+    margin-left: -20vw;
+    animation: move-skeleton 1.5s infinite;
+    background-image: linear-gradient(90deg,
+      transparent 0, rgba(lightgrey, 0.75) 50%, transparent 100%);
+  }
+</style>
