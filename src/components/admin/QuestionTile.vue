@@ -30,14 +30,18 @@
   <div
     v-else
     class="question tile tile-centered skeleton">
-    
+
     <div class="tile-content">
       <p class="tile-title">
-        <random-span :a="8" :b="8" />
+        <random-span
+          :a="8"
+          :b="8" />
       </p>
 
       <div class="tile-subtitle">
-        <random-span :a="14" :b="4" />
+        <random-span
+          :a="14"
+          :b="4" />
       </div>
     </div>
 

@@ -1,12 +1,15 @@
 <template>
   <section class="answers">
-    <base-card
-      v-if="!answers.length"
-      v-for="n of 16" :key="n" />
+    <template v-if="!answers.length">
+      <base-card
+        v-for="n of 16"
+        :key="n" />
+    </template>
 
     <base-card
       v-for="answer of answers"
-      :card="answer" :key="answer['.key']">
+      :card="answer"
+      :key="answer['.key']">
 
       <button
         slot="options"

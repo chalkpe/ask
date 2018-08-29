@@ -1,20 +1,27 @@
 <template lang="html">
-  <article 
+  <article
     v-if="!card"
     class="skeleton card">
-    
+
     <div class="card-header">
       <div class="card-title">
-        <random-span :a="5" :b="8" />
+        <random-span
+          :a="5"
+          :b="8" />
       </div>
 
       <div class="card-subtitle">
-        <random-span :a="11" :b="4" />
+        <random-span
+          :a="11"
+          :b="4" />
       </div>
     </div>
 
     <div class="card-body">
-      <random-span :a="40" :b="50" unit="%" />
+      <random-span
+        :a="40"
+        :b="50"
+        unit="%" />
     </div>
   </article>
 
@@ -26,7 +33,7 @@
       <span class="float-right">
         <slot name="options" />
       </span>
-      
+
       <div class="card-title">
         {{ card.question }}
       </div>
@@ -40,7 +47,9 @@
       </div>
     </div>
 
-    <div v-if="card.answer" class="card-body">
+    <div
+      v-if="card.answer"
+      class="card-body">
       {{ card.answer }}
     </div>
   </article>

@@ -1,27 +1,36 @@
 <template>
-  <div class="questions">
-    <question-tile
-      v-if="!questions.length"
-      v-for="n of 16" :key="n" />
+  <section
+    v-if="questions"
+    class="questions">
 
     <question-tile
       v-for="question of questions"
-      :question="question" :key="question['.key']" />
+      :question="question"
+      :key="question['.key']" />
+  </section>
 
-    <div
-      v-if="!isLoading && !questions.length"
-      class="questions empty">
+  <section
+    v-else-if="isLoading"
+    class="questions loading">
 
-      <div class="empty-icon"><i class="icon icon-mail" /></div>
-      <p class="empty-title h5">받은 질문이 없습니다</p>
-      <p class="empty-subtitle">흑흑... 다들 너무해... 아무도 관심 없어...</p>
-      <div class="empty-action">
-        <button
-          class="btn btn-primary"
-          @click="$router.back()">돌아가기</button>
-      </div>
+    <question-tile
+      v-for="n of 16"
+      :key="n" />
+  </section>
+
+  <section
+    v-else
+    class="questions empty">
+
+    <div class="empty-icon"><i class="icon icon-mail" /></div>
+    <p class="empty-title h5">받은 질문이 없습니다</p>
+    <p class="empty-subtitle">흑흑... 다들 너무해... 아무도 관심 없어...</p>
+    <div class="empty-action">
+      <button
+        class="btn btn-primary"
+        @click="$router.back()">돌아가기</button>
     </div>
-  </div>
+  </section>
 </template>
 
 <script>
