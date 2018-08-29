@@ -5,7 +5,8 @@
       :class="{ 'is-error': invalid }"
       class="form-input question"
       rows="3"
-      placeholder="초크에게 질문을 남기세요!" />
+      placeholder="초크에게 질문을 남기세요!"
+      @keydown.shift.enter.stop.prevent="submitQuestion" />
 
     <span class="bottom-bar">
       <span

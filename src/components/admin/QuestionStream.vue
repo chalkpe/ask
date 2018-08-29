@@ -1,6 +1,6 @@
 <template>
   <section
-    v-if="questions"
+    v-if="questions && questions.length"
     class="questions">
 
     <question-tile
@@ -11,7 +11,7 @@
 
   <section
     v-else-if="isLoading"
-    class="questions loading">
+    class="questions skeleton">
 
     <question-tile
       v-for="n of 16"
