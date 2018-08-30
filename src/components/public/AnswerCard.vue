@@ -56,10 +56,11 @@
 </template>
 
 <script>
-import RelDate from './partial/RelDate.vue'
-import RandomSpan from './partial/RandomSpan.vue'
+import RelDate from '../partial/RelDate.vue'
+import RandomSpan from '../partial/RandomSpan.vue'
 
 export default {
+  name: 'AnswerCard',
   components: { RelDate, RandomSpan },
 
   props: {
@@ -72,7 +73,7 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-  @import '../base.scss';
+  @import '../../base.scss';
 
   .card {
     margin-bottom: 0.75em;

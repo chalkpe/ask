@@ -1,12 +1,12 @@
 <template>
   <section class="answers">
     <template v-if="!answers.length">
-      <base-card
+      <answer-card
         v-for="n of 16"
         :key="n" />
     </template>
 
-    <base-card
+    <answer-card
       v-for="answer of answers"
       :card="answer"
       :key="answer['.key']">
@@ -18,17 +18,17 @@
 
         <i class="icon icon-share" />
       </button>
-    </base-card>
+    </answer-card>
   </section>
 </template>
 
 <script>
 import firebase from 'fb'
-import BaseCard from '../BaseCard.vue'
+import AnswerCard from './AnswerCard.vue'
 
 export default {
   name: 'AnswerStream',
-  components: { BaseCard },
+  components: { AnswerCard },
   firestore: () => ({
     answers: firebase.firestore().collection('answers').orderBy('repliedAt', 'desc')
   })
