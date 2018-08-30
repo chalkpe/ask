@@ -9,7 +9,7 @@
       </p>
 
       <div class="tile-subtitle text-gray">
-        <rel-date :epoch="question.askedAt" /> &middot;
+        <relative-date :epoch="question.askedAt" /> &middot;
         <user-agent-string :uas="question.userAgent" />
       </div>
     </div>
@@ -49,13 +49,13 @@
 </template>
 
 <script>
-import RelDate from '../partial/RelDate.vue'
 import RandomSpan from '../partial/RandomSpan.vue'
+import RelativeDate from '../partial/RelativeDate.vue'
 import UserAgentString from '../partial/UserAgentString.vue'
 
 export default {
   name: 'QuestionTile',
-  components: { RelDate, RandomSpan, UserAgentString },
+  components: { RelativeDate, RandomSpan, UserAgentString },
   props: {
     question: { type: Object, default: null }
   }

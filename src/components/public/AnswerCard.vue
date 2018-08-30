@@ -39,8 +39,8 @@
       </div>
 
       <div class="card-subtitle text-gray">
-        <rel-date :epoch="card.repliedAt || card.askedAt" />
-        <rel-date
+        <relative-date :epoch="card.repliedAt || card.askedAt" />
+        <relative-date
           v-if="card.repliedAt"
           :epoch="card.askedAt"
           :diff="card.repliedAt" /> 동안 기다린 질문
@@ -56,12 +56,12 @@
 </template>
 
 <script>
-import RelDate from '../partial/RelDate.vue'
 import RandomSpan from '../partial/RandomSpan.vue'
+import RelativeDate from '../partial/RelativeDate.vue'
 
 export default {
   name: 'AnswerCard',
-  components: { RelDate, RandomSpan },
+  components: { RelativeDate, RandomSpan },
 
   props: {
     card: {
