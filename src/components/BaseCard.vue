@@ -49,9 +49,7 @@
 
     <div
       v-if="card.answer"
-      class="card-body">
-      {{ card.answer }}
-    </div>
+      class="card-body">{{ card.answer }}</div>
   </article>
 </template>
 
@@ -91,6 +89,7 @@ export default {
 
     .card-body {
       font-size: $font-size;
+      white-space: nowrap;
     }
   }
 
