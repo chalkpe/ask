@@ -27,8 +27,8 @@ export default new Vuex.Store({
       const token = await firebase.messaging().getToken()
       if (!token || registrations.find(r => r.token === token)) return
 
-      const r = { token, subscribedAt: new Date().toISOString(), userAgent: navigator.userAgent }
-      await ref.update({ email, updatedAt: new Date().toISOString(), registrations: registrations.concat(r) })
+      const r = { token, subscribedAt: Date.now(), userAgent: navigator.userAgent }
+      await ref.update({ email, updatedAt: Date.now(), registrations: registrations.concat(r) })
     }
   }
 })
