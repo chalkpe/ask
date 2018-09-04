@@ -7,7 +7,7 @@
     <div class="text-right bottom-bar">
       <button
         class="btn mr-1"
-        @click="$router.back()">돌아가기</button>
+        @click="$router.push('/')">돌아가기</button>
 
       <button
         class="btn btn-primary"

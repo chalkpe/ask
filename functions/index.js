@@ -21,3 +21,5 @@ const n = (tokensList, payload) =>
 exports.notify = functions.firestore
   .document('questions/{id}')
   .onCreate((s, c) => t().then(k => n(k, p(s, c))))
+
+exports.ip = functions.https.onCall((_, ctx) => ctx.rawRequest.ip)

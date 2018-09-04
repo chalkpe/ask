@@ -1,6 +1,6 @@
 {
   "name": "ask",
-  "version": "1.2.0",
+  "version": "1.2.2",
   "description": "An ask service built with Firebase",
   "main": "index.html",
   "repository": "https://github.com/ChalkPE/ask",

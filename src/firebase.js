@@ -6,6 +6,7 @@ import firebase from 'firebase/app'
 import 'firebase/auth'
 import 'firebase/messaging'
 import 'firebase/firestore'
+import 'firebase/functions'
 
 Vue.use(VueFirestore)
 firebase.initializeApp(config)

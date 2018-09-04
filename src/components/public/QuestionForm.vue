@@ -14,7 +14,7 @@
         class="counter">{{ question.length }} / {{ maxLength }}</span>
 
       <button
-        :disabled="!question || invalid || pending"
+        :disabled="empty || invalid || pending"
         :class="{ 'btn-error': invalid }"
         class="btn btn-primary submit"
         @click="submitQuestion">질문하기</button>
@@ -31,6 +31,10 @@ export default {
   data: () => ({ question: '', maxLength: 140, pending: false }),
 
   computed: {
+    empty () {
+      return !this.question || !this.question.trim()
+    },
+
     invalid () {
       return this.question.length > this.maxLength
     }
