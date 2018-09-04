@@ -7,6 +7,8 @@
       v-for="question of questions"
       :question="question"
       :key="question['.key']" />
+
+    <router-view />
   </section>
 
   <section

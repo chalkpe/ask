@@ -7,12 +7,13 @@ import DeviceManager from './views/DeviceManager.vue'
 
 import AnswerDetail from './components/public/AnswerDetail.vue'
 import QuestionDetail from './components/admin/QuestionDetail.vue'
+import QuestionStream from './components/admin/QuestionStream.vue'
 
 Vue.use(VueRouter)
 
 const admin = [
   { path: 'devices', component: DeviceManager },
-  { path: ':id', component: QuestionDetail }
+  { path: '', component: QuestionStream, children: [{ path: ':id', component: QuestionDetail }] }
 ]
 
 const routes = [

@@ -1,8 +1,5 @@
 <template>
-  <div v-if="user">
-    <question-stream />
-    <router-view />
-  </div>
+  <router-view v-if="user" />
   <auth-form v-else />
 </template>
 
