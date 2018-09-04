@@ -10,7 +10,7 @@ import 'moment/locale/ko'
 moment.locale('ko')
 
 export default {
-  name: 'RelDate',
+  name: 'RelativeDate',
   props: {
     epoch: { type: Number, required: true },
     diff: { type: Number, default: 0 }

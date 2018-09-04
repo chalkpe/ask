@@ -3,7 +3,7 @@
     v-if="answer || isLoading"
     class="single-answer">
 
-    <base-card :card="answer" />
+    <answer-card :card="answer" />
     <div class="text-right bottom-bar">
       <button
         class="btn mr-1"
@@ -20,7 +20,7 @@
 
 <script>
 import firebase from 'fb'
-import BaseCard from '../BaseCard.vue'
+import AnswerCard from './AnswerCard.vue'
 
 const tweet = 'https://twitter.com/intent/tweet'
 const answers = firebase.firestore().collection('answers')
@@ -30,7 +30,7 @@ const ellipsis = (text, limit) =>
 
 export default {
   name: 'AnswerDetail',
-  components: { BaseCard },
+  components: { AnswerCard },
 
   data: () => ({ answer: null, isLoading: true }),
   computed: {
