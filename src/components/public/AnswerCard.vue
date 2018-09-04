@@ -90,7 +90,7 @@ export default {
 
     .card-body {
       font-size: $font-size;
-      white-space: nowrap;
+      white-space: pre-line;
     }
   }
 
