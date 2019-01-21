@@ -3,7 +3,7 @@
     <template v-if="!answers.length">
       <answer-card
         v-for="n of 16"
-        :key="n" />
+        :key="n"></answer-card>
     </template>
 
     <answer-card
@@ -16,7 +16,7 @@
         class="btn btn-link"
         @click="$router.push('/' + answer['.key'])">
 
-        <i class="icon icon-share" />
+        <i class="icon icon-share"></i>
       </button>
     </answer-card>
   </section>

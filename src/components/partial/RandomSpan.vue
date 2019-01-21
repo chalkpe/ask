@@ -1,5 +1,5 @@
 <template lang="html">
-  <span :style="{ width: (a + Math.random() * b) + unit }" />
+  <span :style="{ width: (a + Math.random() * b) + unit }"></span>
 </template>
 
 <script>

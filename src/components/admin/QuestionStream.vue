@@ -6,7 +6,7 @@
     <question-tile
       v-for="question of questions"
       :question="question"
-      :key="question['.key']" />
+      :key="question['.key']"></question-tile>
   </section>
 
   <section
@@ -15,14 +15,14 @@
 
     <question-tile
       v-for="n of 16"
-      :key="n" />
+      :key="n"></question-tile>
   </section>
 
   <section
     v-else
     class="questions empty">
 
-    <div class="empty-icon"><i class="icon icon-mail" /></div>
+    <div class="empty-icon"><i class="icon icon-mail"></i></div>
     <p class="empty-title h5">받은 질문이 없습니다</p>
     <p class="empty-subtitle">흑흑... 다들 너무해... 아무도 관심 없어...</p>
     <div class="empty-action">

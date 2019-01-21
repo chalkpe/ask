@@ -7,7 +7,7 @@
       <div class="modal-header">
         <a
           class="btn btn-clear float-right"
-          @click="close" />
+          @click="close"></a>
 
         <div class="modal-title h5">답변 작성하기</div>
       </div>
@@ -20,7 +20,7 @@
         <textarea
           v-model="answer"
           class="form-input"
-          rows="3" />
+          rows="3"></textarea>
       </div>
       <div class="modal-footer">
         <button

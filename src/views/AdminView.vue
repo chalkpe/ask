@@ -1,9 +1,9 @@
 <template>
   <div v-if="user">
-    <question-stream />
-    <router-view />
+    <question-stream></question-stream>
+    <router-view></router-view>
   </div>
-  <auth-form v-else />
+  <auth-form v-else></auth-form>
 </template>
 
 <script>

@@ -1,7 +1,7 @@
 <template>
   <div class="main">
-    <question-form />
-    <answer-stream />
+    <question-form></question-form>
+    <answer-stream></answer-stream>
   </div>
 </template>
 

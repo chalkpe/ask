@@ -3,7 +3,7 @@
     v-if="answer || isLoading"
     class="single-answer">
 
-    <answer-card :card="answer" />
+    <answer-card :card="answer"></answer-card>
     <div class="text-right bottom-bar">
       <button
         class="btn mr-1"

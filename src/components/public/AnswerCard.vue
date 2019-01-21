@@ -7,13 +7,13 @@
       <div class="card-title">
         <random-span
           :a="5"
-          :b="8" />
+          :b="8"></random-span>
       </div>
 
       <div class="card-subtitle">
         <random-span
           :a="11"
-          :b="4" />
+          :b="4"></random-span>
       </div>
     </div>
 
@@ -21,7 +21,7 @@
       <random-span
         :a="40"
         :b="50"
-        unit="%" />
+        unit="%"></random-span>
     </div>
   </article>
 
@@ -31,7 +31,7 @@
 
     <div class="card-header">
       <span class="float-right">
-        <slot name="options" />
+        <slot name="options"></slot>
       </span>
 
       <div class="card-title">
@@ -39,11 +39,11 @@
       </div>
 
       <div class="card-subtitle text-gray">
-        <relative-date :epoch="card.repliedAt || card.askedAt" />
+        <relative-date :epoch="card.repliedAt || card.askedAt"></relative-date>
         <relative-date
           v-if="card.repliedAt"
           :epoch="card.askedAt"
-          :diff="card.repliedAt" /> 동안 기다린 질문
+          :diff="card.repliedAt"></relative-date> 동안 기다린 질문
       </div>
     </div>
 

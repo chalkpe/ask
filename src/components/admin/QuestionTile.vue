@@ -9,8 +9,9 @@
       </p>
 
       <div class="tile-subtitle text-gray">
-        <relative-date :epoch="question.askedAt" /> &middot;
-        <user-agent-string :uas="question.userAgent" />
+        <relative-date :epoch="question.askedAt"></relative-date>
+        &middot;
+        <user-agent-string :uas="question.userAgent"></user-agent-string>
       </div>
     </div>
 
@@ -33,15 +34,11 @@
 
     <div class="tile-content">
       <p class="tile-title">
-        <random-span
-          :a="8"
-          :b="8" />
+        <random-span :a="8" :b="8"></random-span>
       </p>
 
       <div class="tile-subtitle">
-        <random-span
-          :a="14"
-          :b="4" />
+        <random-span :a="14" :b="4"></random-span>
       </div>
     </div>
 
@@ -52,6 +49,9 @@
 import RandomSpan from '../partial/RandomSpan.vue'
 import RelativeDate from '../partial/RelativeDate.vue'
 import UserAgentString from '../partial/UserAgentString.vue'
+
+import firebase from 'fb'
+const db = firebase.firestore()
 
 export default {
   name: 'QuestionTile',

@@ -6,7 +6,9 @@
       class="form-input question"
       rows="3"
       placeholder="초크에게 질문을 남기세요!"
-      @keydown.shift.enter.stop.prevent="submitQuestion" />
+      @keydown.meta.enter.stop.prevent="submitQuestion"
+      @keydown.ctrl.enter.stop.prevent="submitQuestion"
+      @keydown.shift.enter.stop.prevent="submitQuestion"></textarea>
 
     <span class="bottom-bar">
       <span

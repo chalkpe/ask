@@ -1,6 +1,6 @@
 <template>
   <footer>
-    Ask &copy; 2018 Chalk<br>
+    Ask &copy; 2018-2019 Chalk<br>
     {{ pkg.license }} License &middot;
     <a
       :href="pkg.repository"

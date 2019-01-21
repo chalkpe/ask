@@ -1,8 +1,10 @@
 <template>
   <div id="app">
-    <navigation-tab />
-    <main class="container"><router-view /></main>
-    <ask-footer />
+    <navigation-tab></navigation-tab>
+    <main class="container">
+      <router-view></router-view>
+    </main>
+    <ask-footer></ask-footer>
   </div>
 </template>
 
