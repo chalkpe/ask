@@ -58,6 +58,15 @@ export default {
   components: { RelativeDate, RandomSpan, UserAgentString },
   props: {
     question: { type: Object, default: null }
+  },
+  methods: {
+    remove (question) {
+      if (!confirm(`정말로 "${question.question}" 질문을 삭제하시겠어요?`)) return
+
+      db.collection('questions').doc(question['.key'])
+        .delete()
+        .catch(err => console.error('err on delete', err))
+    }
   }
 }
 </script>
