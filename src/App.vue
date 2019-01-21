@@ -9,8 +9,6 @@
 </template>
 
 <script>
-import 'lato-webfont'
-import 'noto-sans-kr'
 import 'spectre.css/dist/spectre-icons.css'
 
 import AskFooter from './components/AskFooter.vue'

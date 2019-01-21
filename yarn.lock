@@ -5229,10 +5229,6 @@ latest-version@^3.0.0:
   dependencies:
     package-json "^4.0.0"
 
-lato-webfont@^2.15.1:
-  version "2.15.1"
-  resolved "https://registry.yarnpkg.com/lato-webfont/-/lato-webfont-2.15.1.tgz#a3b0870b79c17051602fbaa1051f8c00f1d0c773"
-
 lazystream@^1.0.0:
   version "1.0.0"
   resolved "https://registry.yarnpkg.com/lazystream/-/lazystream-1.0.0.tgz#f6995fe0f820392f61396be89462407bb77168e4"
@@ -5990,10 +5986,6 @@ normalize-url@^1.4.0:
 normalize-url@^3.0.0:
   version "3.2.0"
   resolved "https://registry.yarnpkg.com/normalize-url/-/normalize-url-3.2.0.tgz#98d0948afc82829f374320f405fe9ca55a5f8567"
-
-noto-sans-kr@^0.1.1:
-  version "0.1.1"
-  resolved "https://registry.yarnpkg.com/noto-sans-kr/-/noto-sans-kr-0.1.1.tgz#00018cdd3bc17205c90885bb262c83d258144231"
 
 npm-bundled@^1.0.1:
   version "1.0.3"
